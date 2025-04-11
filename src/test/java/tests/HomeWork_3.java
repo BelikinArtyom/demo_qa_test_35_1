@@ -13,12 +13,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HomeWork_3 {
 
+    File file = new File("src/test/imgs/test_img.jpg");
+
     @BeforeAll
     static void BeforeAll() {
         Configuration.browserSize = "2560x1440";
         Configuration.baseUrl = "https://demoqa.com";
-        File file = new File("src/test/imgs/test_img.jpg");
-       // Configuration.holdBrowserOpen = true; // Для отладки
     }
 
     @Test
@@ -41,7 +41,6 @@ public class HomeWork_3 {
         $("label[for='hobbies-checkbox-1']").click();
         $("#hobbies-checkbox-2").shouldBe(selected);
         $("#hobbies-checkbox-1").shouldBe(selected);
-        File file = new File("src/test/imgs/test_img.jpg");
         $("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue("Улица Пушкина, дом Колотушкина");
         $("#state").click();
