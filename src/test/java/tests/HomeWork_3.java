@@ -11,7 +11,7 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class DemoQaTest1 {
+public class HomeWork_3 {
 
     @BeforeAll
     static void BeforeAll() {
