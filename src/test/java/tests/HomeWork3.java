@@ -11,19 +11,22 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeWork_3 {
+public class HomeWork3 {
 
-    File file = new File("src/test/imgs/test_img.jpg");
+    File file = new File("src/test/resources/test_img.jpg");
 
     @BeforeAll
-    static void BeforeAll() {
+    static void beforeAll() {
         Configuration.browserSize = "2560x1440";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
     }
 
     @Test
-    void FormTest1() throws InterruptedException {
+    void formTest1() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Паша");
         $("#lastName").setValue("Техник");
         $("#userEmail").setValue("xanax@techique.com");
@@ -41,7 +44,7 @@ public class HomeWork_3 {
         $("label[for='hobbies-checkbox-1']").click();
         $("#hobbies-checkbox-2").shouldBe(selected);
         $("#hobbies-checkbox-1").shouldBe(selected);
-        $("#uploadPicture").uploadFile(file);
+        $("#uploadPicture").uploadFromClasspath("test_img.jpg");
         $("#currentAddress").setValue("Улица Пушкина, дом Колотушкина");
         $("#state").click();
         $("#react-select-3-input").setValue("Uttar Pradesh").pressEnter();
